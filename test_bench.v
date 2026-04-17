@@ -12,7 +12,7 @@ module testbench;
 
         $monitor("Sum: %8b", sum);
 
-        a = 8'b00001111; b = 8'b00000011;
+        a = 'd101; b = 'd120;
 
     end 
 endmodule
