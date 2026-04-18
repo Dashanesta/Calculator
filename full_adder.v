@@ -9,7 +9,7 @@ module full_adder(A, B, cin, sum, cout);
   half_adder ha1 (.A(A), .B(B), .sum(s1), .carry(c1));
   half_adder ha2 (.A(s1), .B(cin), .sum(sum), .carry(c2));
   
-  or g1 (cout, c1, c2);
+  assign cout = c1 | c2;
   
   
 endmodule

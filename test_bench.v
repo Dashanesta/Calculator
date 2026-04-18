@@ -1,4 +1,3 @@
-`include "adder_16b.v"
 `include "multiplier_8b.v"
 `include "subtractor_16b.v"
 `include "twos_complement.v"
@@ -23,19 +22,18 @@ module testbench;
     initial begin
         
         // set test inputs
-        a_add = 'd240; neg_in = 'd129; #0; b_add = neg_out;
-        //a_sub = 'd129; b_sub = 'd30;
-                a2 = 'd4; b2 = 'd12;
+        a_add = 'd140; neg_in = 'd129; #0; b_add = neg_out;
+        a_sub = 'd129; b_sub = 'd30;
+        a2 = 'd4; b2 = 'd12;
 
-        
         // dump waveform
         $dumpfile("dump.vcd");
         $dumpvars(1);
 
         // display a, b, and sum in both binary and decimal form
-        //$display("%d + %d", a_add, b_add);
-        $monitor("Sum (bin): %16b\nSum (dec): %d", sum, sum);
-        //$monitor ("Diff (bin): %16b\nDiff (dec): %d", diff, diff);
+        $display("%d + %d", a_add, b_add);
+        $display("Sum (bin): %16b\nSum (dec): %d", sum, sum);
+        $display ("Diff (bin): %16b\nDiff (dec): %d", diff, diff);
 
         // display a2, b2, and prod in both binary and decimal form
         $display("%d * %d", a2, b2);
