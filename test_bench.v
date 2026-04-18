@@ -7,12 +7,17 @@ module testbench;
     adder_16b uut(.a(a),.b(b),.sum(sum));
 
     initial begin
+        
+        // set test inputs
+        a = 'd240; b = 'd129;
+        
+        // dump waveform
         $dumpfile("dump.vcd");
         $dumpvars(1);
 
-        $monitor("Sum: %16b", sum);
-
-        a = 'd240; b = 'd129;
+        // display a, b, and sum in both binary and decimal form
+        $display("%d + %d", a, b);
+        $monitor("Sum (bin): %16b\nSum (dec): %d", sum, sum);
 
     end 
 endmodule
