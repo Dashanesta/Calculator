@@ -1,18 +1,18 @@
-`include "adder_8b.v"
+`include "adder_16b.v"
 
 module testbench;
-    reg [7:0] a,b;
-    wire[7:0] sum;
+    reg [15:0] a,b;
+    wire[15:0] sum;
 
-    adder_8b uut(.a(a),.b(b),.sum(sum));
+    adder_16b uut(.a(a),.b(b),.sum(sum));
 
     initial begin
         $dumpfile("dump.vcd");
         $dumpvars(1);
 
-        $monitor("Sum: %8b", sum);
+        $monitor("Sum: %16b", sum);
 
-        a = 'd101; b = 'd120;
+        a = 'd240; b = 'd129;
 
     end 
 endmodule
