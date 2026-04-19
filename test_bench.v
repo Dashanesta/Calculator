@@ -1,16 +1,21 @@
+`include "half_adder.v"
+`include "full_adder.v"
+`include "adder_16b.v"
+
+`include "half_subtractor.v"
+`include "full_subtractor.v"
+`include "subtractor_16b.v"
+
+`include "multiplier.v"
 `include "multiplier_8b.v"
 `include "divider_16b.v"
-`include "subtractor_16b.v"
+
 `include "twos_complement.v"
-`include "dd_16b.v"
-`include "double_dabble.v"
+
 `include "greater_than.v"
-`include "full_adder.v"
-`include "half_adder.v"
-`include "full_subtractor.v"
-`include "adder_16b.v"
-`include "multiplier.v"
-`include "half_subtractor.v"
+`include "double_dabble.v"
+`include "dd_16b.v"
+
 
 module testbench;
     reg [15:0] a_add, b_add, a_sub, b_sub;
