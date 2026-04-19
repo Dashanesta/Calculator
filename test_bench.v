@@ -15,14 +15,14 @@ module testbench;
     adder_16b adder (.a(a_add),.b(b_add),.sum(sum));
     subtractor_16b subtractor (.a(a_sub),.b(b_sub),.diff(diff));
     twos_complement twos (.in(neg_in), .out(neg_out));
-    multiplier_16b uut2(.a(a2),.b(b2),.prod(prod));
+    multiplier_8b uut2(.a(a2),.b(b2),.prod(prod));
 
 
 
     initial begin
         
         // set test inputs
-        a_add = 'd140; neg_in = 'd129; #0; b_add = neg_out;
+        a_add = 'd140; /*neg_in = 'd129;*/ #0; b_add = 'd196;
         a_sub = 'd129; b_sub = 'd30;
         a2 = 'd4; b2 = 'd12;
 
@@ -30,9 +30,15 @@ module testbench;
         $dumpfile("dump.vcd");
         $dumpvars(1);
 
+        // small delay to give conbinational logic time to "settle" - don't question it it's just needed lmao
+        #1;
+
         // display a, b, and sum in both binary and decimal form
         $display("%d + %d", a_add, b_add);
         $display("Sum (bin): %16b\nSum (dec): %d", sum, sum);
+
+        // display a, b, and diff in both binary and decimal form
+        $display("%d - %d", a_sub, b_sub);
         $display ("Diff (bin): %16b\nDiff (dec): %d", diff, diff);
 
         // display a2, b2, and prod in both binary and decimal form

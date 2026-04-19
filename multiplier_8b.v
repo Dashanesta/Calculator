@@ -1,7 +1,7 @@
 `include "adder_16b.v"
 `include "multiplier.v"
 
-module multiplier_16b(
+module multiplier_8b(
     input [7:0] a,
     input [7:0] b,
     output [15:0] prod
