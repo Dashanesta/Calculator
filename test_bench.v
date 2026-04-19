@@ -30,13 +30,18 @@ module testbench;
         $dumpfile("dump.vcd");
         $dumpvars(1);
 
+        #5;
         // display a, b, and sum in both binary and decimal form
         $display("%d + %d", a_add, b_add);
+        #5;
         $display("Sum (bin): %16b\nSum (dec): %d", sum, sum);
+        #5;
         $display ("Diff (bin): %16b\nDiff (dec): %d", diff, diff);
 
         // display a2, b2, and prod in both binary and decimal form
+        #5;
         $display("%d * %d", a2, b2);
+        #5;
         $display("Prod (bin): %16b\nProd (dec): %d", prod, prod);
 
         $finish; 
