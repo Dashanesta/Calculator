@@ -1,5 +1,3 @@
-`include "half_adder.v"
-
 module full_adder(A, B, cin, sum, cout);
   input A, B, cin;
   output sum, cout;

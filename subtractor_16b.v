@@ -1,4 +1,3 @@
-`include "full_subtractor.v"
 module subtractor_16b(
     input [15:0] a,
     input [15:0] b,

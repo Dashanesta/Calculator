@@ -2,6 +2,15 @@
 `include "divider_16b.v"
 `include "subtractor_16b.v"
 `include "twos_complement.v"
+`include "dd_16b.v"
+`include "double_dabble.v"
+`include "greater_than.v"
+`include "full_adder.v"
+`include "half_adder.v"
+`include "full_subtractor.v"
+`include "adder_16b.v"
+`include "multiplier.v"
+`include "half_subtractor.v"
 
 module testbench;
     reg [15:0] a_add, b_add, a_sub, b_sub;
@@ -15,6 +24,9 @@ module testbench;
     reg clk, rst, start;
     reg [15:0] dividend, divisor;
     wire [15:0] quotient, remainder;
+
+    reg[15:0] in_dd;
+    wire[19:0] out_dd;
 
 
     adder_16b adder (.a(a_add),.b(b_add),.sum(sum));
@@ -31,6 +43,8 @@ module testbench;
         .r(remainder)
         );
 
+    dd_16b dd(.bin(in_dd),.dcb(out_dd));
+
 
     // clock for divider
     always #5 clk = ~clk;
@@ -42,6 +56,7 @@ module testbench;
         a_sub = 'd129; b_sub = 'd30;
         a2 = 'd4; b2 = 'd12;
         dividend = 'd219; divisor = 'd4;
+        in_dd = 'd13103;
 
         // dump waveform
         $dumpfile("dump.vcd");
@@ -72,6 +87,9 @@ module testbench;
         #180; // allow time for sequential logic
         $display ("%d / %d", dividend, divisor);
         $display("Quotient: %d, Remainder: %d", quotient, remainder);
+
+        #10;
+        $display("DD IN: %16b, DD OUT: %20b", in_dd, out_dd);
 
         $finish; 
     end

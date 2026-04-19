@@ -1,4 +1,3 @@
-`include "half_subtractor.v"
 module full_subtractor(A, B, bin, diff, bout);
     input A, B, bin;
     output diff, bout;

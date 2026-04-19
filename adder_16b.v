@@ -1,5 +1,3 @@
-`include "full_adder.v"
-
 module adder_16b(
     input [15:0] a,
     input [15:0] b,
