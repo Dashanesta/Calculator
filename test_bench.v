@@ -15,7 +15,8 @@
 `include "greater_than.v"
 `include "double_dabble.v"
 `include "dd_16b.v"
-
+`include "r_double_dabble.v"
+`include "r_dd_16b.v"
 
 module testbench;
     reg [15:0] a_add, b_add, a_sub, b_sub;
@@ -31,7 +32,9 @@ module testbench;
     wire [15:0] quotient, remainder;
 
     reg[15:0] in_dd;
+    reg[19:0] r_in_dd;
     wire[19:0] out_dd;
+    wire[15:0] r_out_dd;
 
 
     adder_16b adder (.a(a_add),.b(b_add),.sum(sum));
@@ -49,6 +52,7 @@ module testbench;
         );
 
     dd_16b dd(.bin(in_dd),.dcb(out_dd));
+    r_dd_16b rdd(.dcb(r_in_dd),.bin(r_out_dd));
 
 
     // clock for divider
@@ -61,7 +65,8 @@ module testbench;
         a_sub = 'd129; b_sub = 'd30;
         a2 = 'd4; b2 = 'd12;
         dividend = 'd219; divisor = 'd4;
-        in_dd = 'd13103;
+        in_dd = 'b11011111;
+        r_in_dd = 'b00000000100010010111;
 
         // dump waveform
         $dumpfile("dump.vcd");
@@ -95,6 +100,9 @@ module testbench;
 
         #10;
         $display("DD IN: %16b, DD OUT: %20b", in_dd, out_dd);
+
+        #10;
+        $display("DD IN: %20b, DD OUT: %16b", r_in_dd, r_out_dd);
 
         $finish; 
     end
