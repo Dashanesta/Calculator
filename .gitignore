@@ -1,3 +1,5 @@
 *.vvp
 *.vcd
 dump.json
+/.vscode
+/obj_dir
